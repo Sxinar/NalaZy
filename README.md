@@ -1,19 +1,59 @@
-# 🦥 NalaZy
-> **"Nala for Lazy People"** - Debian tabanlı sistemler için ultra hızlı ve minimalist paket yönetimi kısayolları.
+# 🦥 NalaZy: The Ultimate Shortcut Suite for Nala
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Bash](https://img.shields.io/badge/Shell-Bash/Zsh-blue.svg)](https://www.gnu.org/software/bash/)
+[![GitHub stars](https://img.shields.io/github/stars/Sxinar/NalaZy?style=for-the-badge)](https://github.com/Sxinar/NalaZy/stargazers)
+[![GitHub license](https://img.shields.io/github/license/Sxinar/NalaZy?style=for-the-badge)](https://github.com/Sxinar/NalaZy/blob/main/LICENSE)
+[![Bash Shell](https://img.shields.io/badge/Shell-Bash%20%2F%20Zsh-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
 
-## 🇹🇷 Türkçe
-NalaZy, standart `apt` komutlarını modern ve hızlı `nala` altyapısıyla birleştirir ve bunları sadece 2 harfe indirger.
-
-### 🛠️ Kısayollar
-- `nu`: Update | `nug`: Upgrade
-- `ni`: Install | `nr`: Remove
-- `ns`: Search | `nh`: History
-
-## 🇺🇸 English
-NalaZy streamlines your workflow by reducing long `nala` commands to just 2-3 keystrokes.
+**NalaZy**, Linux terminalinde vakit kaybetmek istemeyen, verimliliğe odaklanan kullanıcılar için geliştirilmiş akıllı bir takma ad (alias) koleksiyonudur. Uzun ve sıkıcı paket yönetimi komutlarını sadece 2-3 tuş vuruşuna indirir.
 
 ---
-**Developed with ❤️ for the Linux Community.**
+
+## 📑 İçindekiler / Table of Contents
+* [Neden NalaZy?](#-neden-nalazy)
+* [Özellikler / Features](#-özellikler--features)
+* [Kısayol Listesi / Alias List](#-kısayol-listesi--alias-list)
+* [Kurulum / Installation](#-kurulum--installation)
+* [Kaldırma / Uninstall](#-kaldırma--uninstall)
+* [Katkıda Bulunma / Contributing](#-katkıda-bulunma--contributing)
+
+---
+
+## 🚀 Neden NalaZy?
+Standart `apt` paket yöneticisi işlevsel olsa da yavaştır ve çıktıları karmaşıktır. `Nala` ise bu süreci hızlandırır ve güzelleştirir. **NalaZy**, bu hızı kullanıcı alışkanlığıyla birleştirerek:
+- Her komutun başına `sudo` yazma derdini bitirir.
+- Komut karmaşasını ortadan kaldırır.
+- `nala`nın tüm gücünü (history, parallel downloads) parmaklarınızın ucuna getirir.
+
+---
+
+## ✨ Özellikler / Features
+- ✅ **Otomatik Sudo:** Alias'lar akıllı `sudo` desteğiyle gelir.
+- ✅ **Hızlı Kurulum:** Tek komutla tüm sistem hazır hale gelir.
+- ✅ **Hafif:** Sisteminize ağır scriptler eklemez, sadece `.bashrc` veya `.bash_aliases` dosyanızı yapılandırır.
+- ✅ **Görsel Başarı:** Nala'nın sunduğu zengin ve renkli arayüzü tam verimle kullanır.
+
+---
+
+## 🛠️ Kısayol Listesi / Alias List
+
+| Komut | Karşılığı (Equivalent) | Açıklama (Description) |
+| :--- | :--- | :--- |
+| `nu` | `sudo nala update` | Paket listelerini günceller / Updates lists |
+| `nug` | `sudo nala upgrade -y` | Sistemi yükseltir / Upgrades system |
+| `ni` | `sudo nala install` | Paket kurar / Installs package |
+| `nr` | `sudo nala remove` | Paket kaldırır / Removes package |
+| `ns` | `nala search` | Paket arar / Searches repository |
+| `nh` | `nala history` | İşlem geçmişi / Transaction history |
+| `nar` | `sudo nala autoremove` | Gereksizleri siler / Cleans dependencies |
+
+---
+
+## 📥 Kurulum / Installation
+
+Projeyi yerel bilgisayarınıza çekin ve kurulum scriptini çalıştırın:
+
+```bash
+git clone [https://github.com/Sxinar/NalaZy.git](https://github.com/Sxinar/NalaZy.git)
+cd NalaZy
+chmod +x install.sh
+./install.sh
