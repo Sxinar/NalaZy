@@ -9,7 +9,6 @@ NC='\033[0m'
 
 clear
 
-# NalaZy Logo (Mor Tonları)
 echo -e "${L_PURPLE}"
 echo "  _   _        _        ______     "
 echo " | \ | |      | |      |___  /     "
@@ -20,7 +19,7 @@ echo " |_| \_|\__,_||_|\__,_|/_____|\__, |"
 echo "                               __/ |"
 echo "                              |___/ "
 echo -e "${NC}"
-echo -e "${BOLD}${PURPLE}  > NalaZy v1.0 | Terminal Asaleti${NC}"
+echo -e "${BOLD}${PURPLE}  > NalaZy v1.0 | Terminal Çakısı${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 
 # Nala Kontrolü
@@ -28,7 +27,7 @@ if ! command -v nala &> /dev/null; then
     echo -e "${PURPLE}  [i] Nala bulunamadı, kurulum başlatılıyor...${NC}"
     sudo apt update && sudo apt install nala -y
 else
-    echo -e "${PURPLE}  [✓] Nala sistemi zaten onurlandırıyor.${NC}"
+    echo -e "${PURPLE}  [✓] Nala sisteme zaten eşlik ediyor.${NC}"
 fi
 
 # Yapılandırma
