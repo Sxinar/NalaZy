@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Renk Tanımlamaları
+# Renk Tanımlamaları (Script İçin)
 PURPLE='\033[0;35m'
 L_PURPLE='\033[1;35m'
 CYAN='\033[0;36m'
@@ -31,12 +31,13 @@ else
     echo -e "${PURPLE}  ✨ Nala sistemi zaten onurlandırıyor.${NC}"
 fi
 
-# Alias Yapılandırması
-echo -e "${PURPLE}  🪄  Kısayollar bashrc dosyasına mühürleniyor...${NC}"
+# Alias ve Fonksiyon Yapılandırması
+echo -e "${PURPLE}  🪄  Kısayollar ve 'nelp' komutu mühürleniyor...${NC}"
 
-# Blok Yönetimi ile Temizlik
+# Blok Yönetimi ile Temizlik (Eski NalaZy bloklarını temizler)
 sed -i '/# >>> NalaZy BEGIN >>>/,/# <<< NalaZy END <<</d' ~/.bashrc
 
+# .bashrc dosyasına yeni bloğu ekle
 cat << 'EOF' >> ~/.bashrc
 # >>> NalaZy BEGIN >>>
 # NalaZy Aliases
@@ -48,10 +49,25 @@ alias nr='sudo nala remove'
 alias ns='nala search'
 alias nh='nala history'
 alias nar='sudo nala autoremove -y'
+
+# NalaZy Yardım Komutu
+nelp() {
+    echo -e "\033[1;35m🔮 NalaZy Komut Rehberi:\033[0m"
+    echo -e "\033[0;36m--------------------------------------------------\033[0m"
+    echo -e "\033[0;35mnu  \033[0m : Depoları Güncelle (update)"
+    echo -e "\033[0;35mnug \033[0m : Sistemi Yükselt (upgrade)"
+    echo -e "\033[0;35mni  \033[0m : Paket Kur (install)"
+    echo -e "\033[0;35mnr  \033[0m : Paket Kaldır (remove)"
+    echo -e "\033[0;35mns  \033[0m : Paket Ara (search)"
+    echo -e "\033[0;35mnh  \033[0m : İşlem Geçmişi (history)"
+    echo -e "\033[0;35mnar \033[0m : Gereksizleri Temizle (autoremove)"
+    echo -e "\033[0;36m--------------------------------------------------\033[0m"
+}
 # <<< NalaZy END <<<
 EOF
 
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 echo -e "${L_PURPLE}  ✅ İşlem Tamam! NalaZy artık aktif.${NC}"
-echo -e "${PURPLE}  👉 Terminali yenilemek için: ${NC}${CYAN}source ~/.bashrc${NC}"
+echo -e "${PURPLE}  👉 Kullanmak için terminali kapatıp açın veya şu komutu çalıştırın:${NC}"
+echo -e "${CYAN}     source ~/.bashrc${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
