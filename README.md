@@ -4,8 +4,6 @@
 [![GitHub license](https://img.shields.io/github/license/Sxinar/NalaZy?style=for-the-badge)](https://github.com/Sxinar/NalaZy/blob/main/LICENSE)
 [![Bash Shell](https://img.shields.io/badge/Shell-Bash%20%2F%20Zsh-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
 
-![NalaZy Banner](assets/nalazy_banner.png)
-
 **NalaZy**, Linux terminalinde vakit kaybetmek istemeyen, verimliliğe odaklanan kullanıcılar için geliştirilmiş akıllı bir takma ad (alias) koleksiyonudur. Uzun ve sıkıcı paket yönetimi komutlarını sadece 2-3 tuş vuruşuna indirir.
 
 ---
