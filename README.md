@@ -63,6 +63,8 @@ chmod +x install.sh
 Kurulum bittikten sonra değişikliklerin aktif olması için terminali kapatıp açın veya şu komutu yazın:
 `source ~/.bashrc`
 
+<img width="476" height="271" alt="image" src="https://github.com/user-attachments/assets/f23dd134-5ef6-486f-9b7e-d39b3d8360c8" />
+
 ---
 
 ## 🗑️ Kaldırma / Uninstall
