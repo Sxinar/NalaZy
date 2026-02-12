@@ -53,7 +53,7 @@ Standart `apt` paket yöneticisi işlevsel olsa da yavaştır ve çıktıları k
 Projeyi yerel bilgisayarınıza çekin ve kurulum scriptini çalıştırın:
 
 ```bash
-git clone [https://github.com/Sxinar/NalaZy.git](https://github.com/Sxinar/NalaZy.git)
+git clone https://github.com/Sxinar/NalaZy.git
 cd NalaZy
 chmod +x install.sh
 ./install.sh
