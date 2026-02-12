@@ -124,9 +124,9 @@ NalaZy'nin `install.sh` scripti, sisteminizde Nala yüklü değilse bunu tespit 
 The `install.sh` script of NalaZy detects if Nala is not installed on your system and installs it automatically for you. No extra steps are needed.
 </details>
 
+
+## 📜 Lisans / License
+Bu proje [MIT](LICENSE) lisansı altında korunmaktadır. Detaylar için `LICENSE` dosyasına göz atabilirsiniz.
 ---
 
 **⭐ Eğer bu projeyi beğendiyseniz yıldız vermeyi unutmayın!** Developed by [Sxinar](https://github.com/Sxinar) with ❤️
-
-
----
