@@ -42,6 +42,13 @@ FILES_TO_EDIT=()
 [ -f "$HOME/.bashrc" ] && FILES_TO_EDIT+=("$HOME/.bashrc")
 [ -f "$HOME/.zshrc" ] && FILES_TO_EDIT+=("$HOME/.zshrc")
 
+# Kullanıcının aktif kabuğuna göre source dosyası belirleme
+if [[ "$SHELL" == *"zsh"* ]]; then
+    CURRENT_RC="~/.zshrc"
+else
+    CURRENT_RC="~/.bashrc"
+fi
+
 echo -e "${PURPLE}  [i] Kısayollar ve 'nelp' komutu yapılandırılıyor...${NC}"
 
 for rcfile in "${FILES_TO_EDIT[@]}"; do
@@ -84,9 +91,8 @@ done
 
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 echo -e "${L_PURPLE}  ✅ Yapılandırma başarıyla tamamlandı.${NC}"
-echo -e "${PURPLE}  [i] Değişikliklerin aktif olması için terminali kapatıp açın${NC}"
-echo -e "${PURPLE}      veya şu komutu çalıştırın:${NC}"
-echo -e "${BOLD}${CYAN}      source $SHELL" # Mevcut kabuğa göre otomatik source
+echo -e "${PURPLE}  [i] Değişiklikleri hemen aktif etmek için şu komutu yazın:${NC}"
+echo -e "${BOLD}${CYAN}      source $CURRENT_RC${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 echo -e "${L_PURPLE}  🚀 Kurulum bitti! Yardım için '${BOLD}nelp${NC}${L_PURPLE}' yazabilirsiniz.${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
