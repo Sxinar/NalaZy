@@ -1,15 +1,55 @@
 #!/bin/bash
-echo "🦥 NalaZy Kuruluyor..."
+
+# Renk Tanımlamaları (Modern Purple Palette)
+PURPLE='\033[0;35m'
+L_PURPLE='\033[1;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+clear
+
+# ASCII Logo (Daha Keskin Versiyon)
+echo -e "${L_PURPLE}"
+echo "  _   _       _        ____________     "
+echo " | \ | |     | |      |___  /\_   _|    "
+echo " |  \| | __ _| | __ _    / /  | | _   _ "
+echo " | . \` |/ _\` | |/ _\` |  / /   | || | | |"
+echo " | |\  | (_| | | (_| | / /__ _| || |_| |"
+echo " |_| \_|\__,_|_|\__,_|/_____|_____\__, |"
+echo "                                   __/ |"
+echo "                                  |___/ "
+echo -e "${NC}"
+echo -e "${PURPLE}💜 NalaZy Kuruluyor... Terminalinize asalet geliyor.${NC}"
+echo -e "${CYAN}--------------------------------------------------------${NC}"
+
+# Nala Kontrolü
 if ! command -v nala &> /dev/null; then
+    echo -e "${PURPLE}🔮 Nala bulunamadı, sihirli paket yükleniyor...${NC}"
     sudo apt update && sudo apt install nala -y
+else
+    echo -e "${PURPLE}✨ Nala zaten sistemde mevcut.${NC}"
 fi
-echo "alias sudo='sudo '" >> ~/.bashrc
-echo "alias nu='sudo nala update'" >> ~/.bashrc
-echo "alias nug='sudo nala upgrade -y'" >> ~/.bashrc
-echo "alias ni='sudo nala install'" >> ~/.bashrc
-echo "alias nr='sudo nala remove'" >> ~/.bashrc
-echo "alias ns='nala search'" >> ~/.bashrc
-echo "alias nh='nala history'" >> ~/.bashrc
-echo "alias nar='sudo nala autoremove -y'" >> ~/.bashrc
-source ~/.bashrc
-echo "✅ Kurulum tamamlandı! Terminali kapatıp açın veya 'source ~/.bashrc' yazın."
+
+# Alias Yapılandırması
+echo -e "${PURPLE}🪄  Aliaslar bashrc dosyasına işleniyor...${NC}"
+
+# Mükerrer kaydı önlemek için temizlik
+sed -i '/# NalaZy Aliases/d' ~/.bashrc 2>/dev/null
+
+cat << 'EOF' >> ~/.bashrc
+
+# NalaZy Aliases
+alias sudo='sudo '
+alias nu='sudo nala update'
+alias nug='sudo nala upgrade -y'
+alias ni='sudo nala install'
+alias nr='sudo nala remove'
+alias ns='nala search'
+alias nh='nala history'
+alias nar='sudo nala autoremove -y'
+EOF
+
+echo -e "${CYAN}--------------------------------------------------------${NC}"
+echo -e "${L_PURPLE}✅ İşlem Tamam! NalaZy artık aktif.${NC}"
+echo -e "${PURPLE}👉 Terminali yenilemek için: ${NC}${CYAN}source ~/.bashrc${NC}"
+echo -e "${CYAN}--------------------------------------------------------${NC}"
