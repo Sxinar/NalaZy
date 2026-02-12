@@ -19,44 +19,33 @@ echo " |_| \_|\__,_||_|\__,_|/_____|\__, |"
 echo "                               __/ |"
 echo "                              |___/ "
 echo -e "${NC}"
-echo -e "${BOLD}${PURPLE}  > NalaZy v1.0 | Evrensel Terminal Çakısı${NC}"
+echo -e "${BOLD}${PURPLE}  > NalaZy v1.0 | Debian & Ubuntu Özel${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 
-# Dağıtım Algılama ve Nala Kurulumu
+# Debian/Ubuntu Kontrolü
+if [ ! -f /etc/debian_version ]; then
+    echo -e "${CYAN}  [!] Bu script sadece Debian/Ubuntu tabanlı sistemler içindir.${NC}"
+    exit 1
+fi
+
+# Nala Kontrolü
 if ! command -v nala &> /dev/null; then
-    echo -e "${PURPLE}  [i] Nala bulunamadı, dağıtımınız için yükleniyor...${NC}"
-    
-    if [ -f /etc/debian_version ]; then
-        sudo apt update && sudo apt install nala -y
-    elif [ -f /etc/arch-release ]; then
-        # Arch tabanlı sistemlerde AUR desteği gerebilir, resmi repoda varsa direkt kurar
-        sudo pacman -S nala --noconfirm || echo -e "${CYAN}  [!] AUR yardımcısı (yay/paru) gerekebilir.${NC}"
-    elif [ -f /etc/fedora-release ]; then
-        sudo dnf install nala -y
-    elif [ -f /etc/redhat-release ]; then
-        sudo dnf install nala -y
-    else
-        echo -e "${CYAN}  [!] Dağıtım algılanamadı. Lütfen nala'yı manuel kurun.${NC}"
-    fi
+    echo -e "${PURPLE}  [i] Nala bulunamadı, kurulum başlatılıyor...${NC}"
+    sudo apt update && sudo apt install nala -y
 else
-    echo -e "${PURPLE}  [✓] Nala sisteme zaten eşlik ediyor.${NC}"
+    echo -e "${PURPLE}  [✓] Nala sistemi zaten onurlandırıyor.${NC}"
 fi
 
 # Yapılandırma
 echo -e "${PURPLE}  [i] Kısayollar ve 'nelp' komutu yapılandırılıyor...${NC}"
 
-# .bashrc veya .zshrc tespiti
-CONF_FILE="$HOME/.bashrc"
-[ -n "$ZSH_VERSION" ] && CONF_FILE="$HOME/.zshrc"
-[ -f "$HOME/.zshrc" ] && CONF_FILE="$HOME/.zshrc"
-
 # Eski blokları temizle
-sed -i '/# >>> NalaZy BEGIN >>>/,/# <<< NalaZy END <<</d' "$CONF_FILE"
+sed -i '/# >>> NalaZy BEGIN >>>/,/# <<< NalaZy END <<</d' ~/.bashrc
 
-# Yapılandırmayı dosyaya ekle
-cat << 'EOF' >> "$CONF_FILE"
+# .bashrc güncelleme
+cat << 'EOF' >> ~/.bashrc
 # >>> NalaZy BEGIN >>>
-# NalaZy Kısayolları
+# NalaZy Kısayolları (Alias)
 alias sudo='sudo '
 alias nu='sudo nala update'
 alias nug='sudo nala upgrade -y'
@@ -87,8 +76,8 @@ EOF
 
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 echo -e "${L_PURPLE}  [✓] Yapılandırma başarıyla tamamlandı.${NC}"
-echo -e "${PURPLE}  [i] Ayarların aktif olması için şu komutu yazın:${NC}"
-echo -e "${BOLD}${CYAN}      source $CONF_FILE${NC}"
+echo -e "${PURPLE}  [i] Ayarların aktif olması için şu komutu çalıştırın:${NC}"
+echo -e "${BOLD}${CYAN}      source ~/.bashrc${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 echo -e "${L_PURPLE}  🚀 Kurulum bitti! Yardım için '${BOLD}nelp${NC}${L_PURPLE}' yazabilirsiniz.${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
