@@ -9,6 +9,7 @@ NC='\033[0m'
 
 clear
 
+# NalaZy Logo
 echo -e "${L_PURPLE}"
 echo "  _   _        _        ______     "
 echo " | \ | |      | |      |___  /     "
@@ -19,7 +20,7 @@ echo " |_| \_|\__,_||_|\__,_|/_____|\__, |"
 echo "                               __/ |"
 echo "                              |___/ "
 echo -e "${NC}"
-echo -e "${BOLD}${PURPLE}  > NalaZy v1.0 | Debian & Ubuntu Özel${NC}"
+echo -e "${BOLD}${PURPLE}  > NalaZy v1.0 | Debian & Ubuntu Özel (Bash/Zsh)${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 
 # Debian/Ubuntu Kontrolü
@@ -36,14 +37,19 @@ else
     echo -e "${PURPLE}  [✓] Nala sistemi zaten onurlandırıyor.${NC}"
 fi
 
-# Yapılandırma
+# Yapılandırma Dosyalarını Belirleme
+FILES_TO_EDIT=()
+[ -f "$HOME/.bashrc" ] && FILES_TO_EDIT+=("$HOME/.bashrc")
+[ -f "$HOME/.zshrc" ] && FILES_TO_EDIT+=("$HOME/.zshrc")
+
 echo -e "${PURPLE}  [i] Kısayollar ve 'nelp' komutu yapılandırılıyor...${NC}"
 
-# Eski blokları temizle
-sed -i '/# >>> NalaZy BEGIN >>>/,/# <<< NalaZy END <<</d' ~/.bashrc
+for rcfile in "${FILES_TO_EDIT[@]}"; do
+    # Eski blokları temizle
+    sed -i '/# >>> NalaZy BEGIN >>>/,/# <<< NalaZy END <<</d' "$rcfile"
 
-# .bashrc güncelleme
-cat << 'EOF' >> ~/.bashrc
+    # Yapılandırmayı ekle
+    cat << 'EOF' >> "$rcfile"
 # >>> NalaZy BEGIN >>>
 # NalaZy Kısayolları (Alias)
 alias sudo='sudo '
@@ -73,11 +79,14 @@ nelp() {
 }
 # <<< NalaZy END <<<
 EOF
+    echo -e "${L_PURPLE}  [✓] $(basename "$rcfile") güncellendi.${NC}"
+done
 
 echo -e "${CYAN}  --------------------------------------------------${NC}"
-echo -e "${L_PURPLE}  [✓] Yapılandırma başarıyla tamamlandı.${NC}"
-echo -e "${PURPLE}  [i] Ayarların aktif olması için şu komutu çalıştırın:${NC}"
-echo -e "${BOLD}${CYAN}      source ~/.bashrc${NC}"
+echo -e "${L_PURPLE}  ✅ Yapılandırma başarıyla tamamlandı.${NC}"
+echo -e "${PURPLE}  [i] Değişikliklerin aktif olması için terminali kapatıp açın${NC}"
+echo -e "${PURPLE}      veya şu komutu çalıştırın:${NC}"
+echo -e "${BOLD}${CYAN}      source $SHELL" # Mevcut kabuğa göre otomatik source
 echo -e "${CYAN}  --------------------------------------------------${NC}"
 echo -e "${L_PURPLE}  🚀 Kurulum bitti! Yardım için '${BOLD}nelp${NC}${L_PURPLE}' yazabilirsiniz.${NC}"
 echo -e "${CYAN}  --------------------------------------------------${NC}"
