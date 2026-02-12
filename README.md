@@ -1,8 +1,8 @@
 # 🦥 NalaZy: The Ultimate Shortcut Suite for Nala
-
-[![GitHub stars](https://img.shields.io/github/stars/Sxinar/NalaZy?style=for-the-badge)](https://github.com/Sxinar/NalaZy/stargazers)
-[![GitHub license](https://img.shields.io/github/license/Sxinar/NalaZy?style=for-the-badge)](https://github.com/Sxinar/NalaZy/blob/main/LICENSE)
-[![Bash Shell](https://img.shields.io/badge/Shell-Bash%20%2F%20Zsh-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/)
+[![GitHub stars](https://img.shields.io/github/stars/Sxinar/NalaZy?style=for-the-badge&color=ffd700&labelColor=333333)](https://github.com/Sxinar/NalaZy/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-4ea94b?style=for-the-badge&labelColor=333333)](https://github.com/Sxinar/NalaZy/blob/main/LICENSE)
+[![Bash Shell](https://img.shields.io/badge/Shell-Bash%20%2F%20Zsh-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white&labelColor=333333)](https://www.gnu.org/software/bash/)
+[![Repo Size](https://img.shields.io/github/repo-size/Sxinar/NalaZy?style=for-the-badge&color=blueviolet&labelColor=333333)](https://github.com/Sxinar/NalaZy)
 
 **NalaZy**, Linux terminalinde vakit kaybetmek istemeyen, verimliliğe odaklanan kullanıcılar için geliştirilmiş akıllı bir takma ad (alias) koleksiyonudur. Uzun ve sıkıcı paket yönetimi komutlarını sadece 2-3 tuş vuruşuna indirir.
 
