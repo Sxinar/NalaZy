@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NalaZy | Linux Paket Yönetimini Hızlandırın</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0a0f1a;
+            --accent-color: #ffd700; /* Nala Sarı/Altın rengi */
+            --secondary-accent: #4ade80;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --card-bg: #161e2d;
+            --code-bg: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, rgba(10, 15, 26, 0) 70%);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.03), transparent);
+        }
+
+        .hero-badge {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffd700, #facc15);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        .install-box {
+            background: var(--code-bg);
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            max-width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .install-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        code {
+            color: var(--accent-color);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 80px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            color: var(--accent-color);
+            padding: 15px;
+            border-bottom: 2px solid #334155;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+            color: var(--text-dim);
+        }
+
+        .alias-key {
+            color: var(--secondary-accent);
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 100px 20px;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            code { font-size: 0.75rem; }
+            .hero-subtitle { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob" style="top: -100px; right: -100px;"></div>
+    <div class="blob" style="bottom: -100px; left: -100px;"></div>
+
+    <header>
+        <div class="hero-badge">🦥 Nala için En Hızlı Kısayol Paketi</div>
+        <h1>NalaZy</h1>
+        <p class="hero-subtitle">
+            Linux terminalinde vakit kaybetmeyin. Karmaşık paket yönetimi komutlarını 2 tuş vuruşuna indiren akıllı alias koleksiyonu.
+        </p>
+        
+        <div class="install-box" onclick="copyToClipboard()">
+            <code id="installCommand">git clone https://github.com/Sxinar/NalaZy.git && cd NalaZy && chmod +x install.sh && ./install.sh</code>
+            <i class="fa-regular fa-copy" id="copyIcon" style="color: var(--text-dim);"></i>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.8rem; color: var(--text-dim);">Tıklayarak yükleme komutunu kopyalayın</p>
+    </header>
+
+    <div class="container">
+        <h2>Kısayol Gücü</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Alias</th>
+                        <th>Komut Karşılığı</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="alias-key">nu</td>
+                        <td>sudo nala update</td>
+                        <td>Listeleri Günceller</td>
+                    </tr>
+                    <tr>
+                        <td class="alias-key">nug</td>
+                        <td>sudo nala upgrade -y</td>
+                        <td>Sistemi Yükseltir</td>
+                    </tr>
+                    <tr>
+                        <td class="alias-key">ni</td>
+                        <td>sudo nala install</td>
+                        <td>Paket Kurar</td>
+                    </tr>
+                    <tr>
+                        <td class="alias-key">nr</td>
+                        <td>sudo nala remove</td>
+                        <td>Paket Kaldırır</td>
+                    </tr>
+                    <tr>
+                        <td class="alias-key">ns</td>
+                        <td>nala search</td>
+                        <td>Paket Arar</td>
+                    </tr>
+                    <tr>
+                        <td class="alias-key">nh</td>
+                        <td>nala history</td>
+                        <td>İşlem Geçmişi</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Otomatik Sudo</h3>
+                <p>Her seferinde sudo yazmanıza gerek kalmaz, aliaslar yetki yönetimini akıllıca halleder.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-gauge-high"></i>
+                <h3>Maksimum Hız</h3>
+                <p>Nala'nın paralel indirme gücünü en kısa yoldan terminalinize getirir.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-feather"></i>
+                <h3>Hafif ve Güvenli</h3>
+                <p>Sistemi yormaz, sadece alias dosyalarınızı yapılandırır. İstediğiniz an kolayca kaldırılabilir.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Developed with ❤️ by <a href="https://github.com/Sxinar" class="footer-link">Sxinar</a></p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">Licensed under MIT</p>
+    </footer>
+
+    <script>
+        function copyToClipboard() {
+            const command = document.getElementById('installCommand').innerText;
+            navigator.clipboard.writeText(command).then(() => {
+                const icon = document.getElementById('copyIcon');
+                icon.classList.replace('fa-regular', 'fa-solid');
+                icon.classList.replace('fa-copy', 'fa-check');
+                icon.style.color = '#4ade80';
+                
+                setTimeout(() => {
+                    icon.classList.replace('fa-solid', 'fa-regular');
+                    icon.classList.replace('fa-check', 'fa-copy');
+                    icon.style.color = '#94a3b8';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
